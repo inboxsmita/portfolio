@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smita Sahu — Principal Backend Engineer</title>
+<meta name="description" content="Smita Sahu — Principal Backend Engineer. 12+ years building enterprise software across banking, telecom and consumer goods.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0c10;
+    --panel:#131519;
+    --border:#22252b;
+    --text:#eef0f2;
+    --text-dim:#b7bcc3;
+    --muted:#767c85;
+    --accent:#6e8bf2;
+    --accent-soft:rgba(110,139,242,0.12);
+    --radius:14px;
+    --maxw:1040px;
+  }
+
+  #about{--accent:#a78bfa;}
+  #skills{--accent:#22d3ee;}
+  #experience{--accent:#fbbf24;}
+  #projects{--accent:#fb7185;}
+  #certifications{--accent:#34d399;}
+  #education{--accent:#fb923c;}
+  #contact{--accent:#6e8bf2;}
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text-dim);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  ::selection{background:var(--accent);color:#0b0c10;}
+
+  a{color:inherit;text-decoration:none;}
+
+  h1,h2,h3,h4{
+    font-family:'Sora',sans-serif;
+    font-weight:600;
+    color:var(--text);
+    letter-spacing:-0.015em;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  section{
+    padding:104px 0;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(11,12,16,0.75);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.scrolled{border-bottom-color:var(--border);}
+
+  nav{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .nav-mark{
+    font-family:'Sora',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--text);
+  }
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+  }
+
+  .nav-links a{
+    font-size:14px;
+    color:var(--muted);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--text);}
+  .nav-links a.active{color:var(--accent);}
+
+  .nav-links .btn-sm{
+    padding:9px 16px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    color:var(--text-dim);
+    font-size:13.5px;
+    transition:all .2s ease;
+  }
+  .nav-links .btn-sm:hover{border-color:var(--accent);color:var(--text);}
+
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+  }
+  .nav-toggle span{
+    width:20px;height:1.5px;
+    background:var(--text);
+    transition:transform .3s ease, opacity .3s ease;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-top:64px;
+    overflow:hidden;
+  }
+
+  #bg-canvas{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    opacity:0;
+    transition:opacity 1.4s ease;
+    pointer-events:none;
+  }
+  #bg-canvas.ready{opacity:1;}
+
+  #hero-canvas{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:0;
+    transition:opacity 1.4s ease;
+  }
+  #hero-canvas.ready{opacity:1;}
+
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:radial-gradient(ellipse 60% 50% at 50% 40%, transparent 0%, var(--bg) 88%);
+    pointer-events:none;
+  }
+
+  .hero-inner{position:relative;z-index:2;}
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color:var(--text-dim);
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:7px 14px;
+    border-radius:100px;
+    margin-bottom:28px;
+  }
+  .badge .dot{
+    width:6px;height:6px;
+    border-radius:50%;
+    background:#5fd98a;
+    box-shadow:0 0 0 3px rgba(95,217,138,0.16);
+  }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 5.6vw, 4rem);
+    line-height:1.08;
+    margin-bottom:20px;
+    max-width:820px;
+  }
+
+  .hero h1 .accent{color:var(--accent);}
+
+  .type-cursor{
+    display:inline-block;
+    width:2px;
+    background:var(--accent);
+    margin-left:2px;
+    animation:blink 0.9s step-end infinite;
+    vertical-align:baseline;
+  }
+  @keyframes blink{
+    0%,50%{opacity:1;}
+    51%,100%{opacity:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .type-cursor{animation:none;}
+  }
+
+  .hero .role{
+    font-size:clamp(1rem,2vw,1.15rem);
+    color:var(--text);
+    font-weight:500;
+    margin-bottom:16px;
+  }
+
+  .hero .tagline{
+    max-width:560px;
+    color:var(--muted);
+    font-size:1.02rem;
+    margin-bottom:40px;
+  }
+
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:64px;
+  }
+
+  .btn{
+    font-size:14px;
+    font-weight:500;
+    padding:13px 22px;
+    border-radius:9px;
+    border:1px solid var(--border);
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    transition:all .22s ease;
+    cursor:pointer;
+    background:transparent;
+    color:var(--text-dim);
+  }
+
+  .btn-primary{
+    background:var(--accent);
+    color:#0b0c10;
+    border-color:var(--accent);
+  }
+  .btn-primary:hover{
+    background:#8aa2f5;
+    transform:translateY(-2px);
+  }
+
+  .btn-ghost:hover{
+    border-color:var(--accent);
+    color:var(--text);
+    transform:translateY(-2px);
+  }
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(4,auto);
+    gap:48px;
+  }
+
+  .hero-stats .stat .num{
+    font-family:'Sora',sans-serif;
+    font-size:1.7rem;
+    font-weight:600;
+    color:var(--text);
+  }
+  .hero-stats .stat .label{
+    font-size:12.5px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-delay-1{transition-delay:.08s;}
+  .reveal-delay-2{transition-delay:.16s;}
+  .reveal-delay-3{transition-delay:.24s;}
+
+  /* ---------- section headers ---------- */
+  .kicker{
+    font-size:13px;
+    font-weight:500;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:10px;
+  }
+
+  .sec-head{margin-bottom:48px;}
+  .sec-head h2{font-size:clamp(1.7rem,3.2vw,2.1rem);margin-bottom:14px;}
+  .sec-head p{color:var(--muted);max-width:560px;font-size:1rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.25fr 0.9fr;
+    gap:56px;
+    align-items:start;
+  }
+
+  .about-grid p{color:var(--text-dim);margin-bottom:16px;}
+  .about-grid p:last-child{margin-bottom:0;}
+
+  .about-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:20px;
+  }
+
+  .pill{
+    font-size:13px;
+    padding:6px 13px;
+    border-radius:100px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    color:var(--text-dim);
+  }
+
+  .highlight-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .highlight-card ul{list-style:none;display:flex;flex-direction:column;gap:14px;}
+  .highlight-card li{
+    font-size:14px;
+    color:var(--text-dim);
+    padding-left:20px;
+    position:relative;
+  }
+  .highlight-card li::before{
+    content:"";
+    position:absolute;
+    left:0;top:7px;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+
+  .skill-cat{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:26px 28px;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .skill-cat:hover{border-color:var(--accent);transform:translateY(-3px);}
+
+  .skill-cat h3{
+    font-size:1rem;
+    color:var(--text);
+    margin-bottom:16px;
+  }
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+
+  .tag{
+    font-size:12.5px;
+    padding:6px 11px;
+    border-radius:7px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--border);
+    color:var(--muted);
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid var(--border);
+  }
+
+  .entry{border-bottom:1px solid var(--border);}
+
+  .entry-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:26px 4px;
+    cursor:pointer;
+  }
+
+  .entry-left{display:flex;align-items:center;gap:18px;min-width:0;}
+
+  .status-dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--border);
+    flex-shrink:0;
+  }
+  .status-dot.current{
+    background:#5fd98a;
+    box-shadow:0 0 0 4px rgba(95,217,138,0.14);
+  }
+
+  .entry-role{display:flex;flex-direction:column;gap:3px;min-width:0;}
+  .entry-role .title{font-family:'Sora',sans-serif;font-weight:600;font-size:1.02rem;color:var(--text);}
+  .entry-role .meta{font-size:13.5px;color:var(--muted);}
+
+  .entry-dates{
+    font-size:13px;
+    color:var(--muted);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  .entry-chevron{
+    color:var(--muted);
+    font-size:13px;
+    transition:transform .3s ease;
+    flex-shrink:0;
+  }
+  .entry.open .entry-chevron{transform:rotate(180deg);color:var(--accent);}
+
+  .entry-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .4s cubic-bezier(.16,1,.3,1);
+  }
+
+  .entry-body-inner{padding:0 4px 28px 26px;}
+
+  .entry-body-inner ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .entry-body-inner li{
+    position:relative;
+    padding-left:18px;
+    color:var(--text-dim);
+    font-size:14.5px;
+  }
+  .entry-body-inner li::before{
+    content:"";
+    position:absolute;
+    left:0;top:9px;
+    width:5px;height:5px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+
+  .highlight-block{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+  .highlight-block .hb-label{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:10px;}
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:18px;
+  }
+
+  .proj-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:26px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:transform .3s cubic-bezier(.16,1,.3,1), border-color .3s ease;
+  }
+  .proj-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+
+  .proj-card .proj-org{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;}
+  .proj-card .proj-title{font-family:'Sora',sans-serif;font-weight:600;font-size:1.05rem;color:var(--text);}
+  .proj-card p{color:var(--muted);font-size:14px;flex-grow:1;}
+
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px;}
+  .proj-tags .tag{font-size:11.5px;padding:4px 9px;}
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-list{display:flex;flex-direction:column;border-top:1px solid var(--border);}
+  .cert-item{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 4px;border-bottom:1px solid var(--border);gap:20px;
+  }
+  .cert-item .cert-name{font-family:'Sora',sans-serif;font-weight:600;font-size:1.02rem;color:var(--text);}
+  .cert-item .cert-year{font-size:13px;color:var(--muted);flex-shrink:0;}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:32px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;
+  }
+  .edu-card .degree{font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:600;color:var(--text);margin-bottom:6px;}
+  .edu-card .field{color:var(--muted);font-size:14px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner{text-align:center;max-width:600px;margin:0 auto;}
+  .contact-inner h2{font-size:clamp(1.9rem,4.6vw,2.6rem);margin-bottom:16px;}
+  .contact-inner p{color:var(--muted);margin-bottom:36px;font-size:1.02rem;}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+  footer{
+    padding:32px 0;
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    position:relative;
+    z-index:1;
+    background:var(--bg);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .about-grid{grid-template-columns:1fr;gap:36px;}
+    .skills-grid{grid-template-columns:1fr;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);gap:28px;}
+  }
+
+  @media (max-width:720px){
+    section{padding:76px 0;}
+    .wrap{padding:0 20px;}
+
+    .nav-links{
+      position:fixed;
+      top:64px;left:0;right:0;
+      background:var(--bg);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:22px 20px;
+      gap:18px;
+      border-bottom:1px solid var(--border);
+      transform:translateY(-8px);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease, transform .25s ease;
+    }
+    .nav-links.open{opacity:1;transform:translateY(0);pointer-events:auto;}
+    .nav-toggle{display:flex;}
+
+    .entry-head{flex-wrap:wrap;}
+    .entry-dates{order:3;width:100%;padding-left:26px;}
+    .entry-left{width:100%;}
+
+    .cert-item{flex-direction:column;align-items:flex-start;gap:6px;}
+    .edu-card{flex-direction:column;align-items:flex-start;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important;transition-duration:0.001ms !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <div class="nav-mark">smita.sahu</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="btn-sm" id="resumeNavBtn">Resume</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <canvas id="hero-canvas"></canvas>
+  <div class="wrap hero-inner">
+    <div class="badge"><span class="dot"></span>Open to opportunities</div>
+    <h1>I build <span class="accent" id="typewriter"></span><span class="type-cursor" id="typeCursor">&nbsp;</span></h1>
+    <div class="role">Smita Sahu — Principal Backend Engineer, Backbase</div>
+    <p class="tagline">12+ years designing cloud-native microservices, event-driven architecture and CI/CD pipelines for enterprise banking, telecom and consumer platforms — in Java, Spring Boot and the full stack around them.</p>
+    <div class="hero-ctas">
+      <a href="mailto:inboxsmits@gmail.com" class="btn btn-primary">Get in touch</a>
+      <a href="https://www.linkedin.com/in/smita-sahu-7a704966/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="#" class="btn btn-ghost" id="resumeBtn">Resume</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">12+</div><div class="label">Years experience</div></div>
+      <div class="stat"><div class="num">4</div><div class="label">Domains</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Countries worked in</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Certifications</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">About</div>
+      <h2>Building the backend of banking.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I've spent the last 12+ years delivering enterprise software across banking, telecom, entertainment and consumer goods — the kind of domains where a bug doesn't just break a page, it breaks a transaction.</p>
+        <p>Right now I'm leading backend engineering at Backbase, focused on Retail and Commercial Banking, FIS integrations, and onboarding flows for banks across North America and the Middle East &amp; Africa. Before that: full-stack leadership at Cavinkare, and nearly six years across Tech Mahindra and BT building eCommerce platforms for globally distributed teams.</p>
+        <p>My core stack is Java and Spring Boot, but I move comfortably across ReactJS, Python and the major clouds. What I care about most is clean architecture, event-driven design, and automation that lets teams ship with confidence.</p>
+        <div class="about-tags">
+          <span class="pill">Java &amp; Spring Boot</span>
+          <span class="pill">Microservices</span>
+          <span class="pill">Event-driven design</span>
+          <span class="pill">Cloud-native</span>
+          <span class="pill">CI/CD</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="highlight-card">
+          <ul>
+            <li>Leading backend architecture for Retail &amp; Commercial Banking and FIS integrations across NA and MEA at Backbase</li>
+            <li>Delivered Cavinkare's cloud-first digital transformation across six full-stack products</li>
+            <li>Six years building BT's eCommerce platform across India and the UK</li>
+            <li>Built event-driven ESB integrations for Disney's legacy systems at Capgemini</li>
+            <li>Comfortable across Java, Python, ReactJS, and Azure / AWS / GCP</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Skills</div>
+      <h2>A stack built for enterprise scale.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <h3>Backend</h3>
+        <div class="tag-row">
+          <span class="tag">Java 8+</span><span class="tag">Spring Boot</span><span class="tag">Spring MVC / Security</span>
+          <span class="tag">JPA</span><span class="tag">Hibernate</span><span class="tag">Node.js</span>
+          <span class="tag">Python (Flask, Django)</span><span class="tag">REST APIs</span>
+          <span class="tag">API Integration</span><span class="tag">Event-driven architecture</span>
+          <span class="tag">Microservices</span><span class="tag">CI/CD</span>
+          <span class="tag">MySQL</span><span class="tag">Oracle</span><span class="tag">Azure SQL</span>
+          <span class="tag">MongoDB</span><span class="tag">DynamoDB</span><span class="tag">Firestore</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal reveal-delay-1">
+        <h3>Frontend</h3>
+        <div class="tag-row">
+          <span class="tag">ReactJS</span><span class="tag">TypeScript</span><span class="tag">HTML5</span>
+          <span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">Bootstrap</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h3>Test &amp; methodology</h3>
+        <div class="tag-row">
+          <span class="tag">TDD</span><span class="tag">BDD</span><span class="tag">JUnit</span><span class="tag">TestNG</span>
+          <span class="tag">Mockito</span><span class="tag">SonarQube</span><span class="tag">Gradle</span>
+          <span class="tag">Maven</span><span class="tag">Agile / Scrum</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal reveal-delay-1">
+        <h3>Infrastructure</h3>
+        <div class="tag-row">
+          <span class="tag">Azure (Blob, Cosmos DB, AD, SQL DB)</span><span class="tag">Firebase</span>
+          <span class="tag">GCP</span><span class="tag">AWS</span><span class="tag">Kubernetes</span>
+          <span class="tag">Docker</span><span class="tag">GitLab</span><span class="tag">GitHub</span><span class="tag">Azure DevOps</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal" style="grid-column:1/-1;">
+        <h3>Other tools &amp; areas</h3>
+        <div class="tag-row">
+          <span class="tag">OpenCV</span><span class="tag">JWT</span><span class="tag">OAuth2</span><span class="tag">Swagger</span>
+          <span class="tag">Postman</span><span class="tag">Camunda BPMN</span><span class="tag">JIRA</span>
+          <span class="tag">Confluence</span><span class="tag">DataDog</span><span class="tag">Splunk</span>
+          <span class="tag">K9s</span><span class="tag">Grafana</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Experience</div>
+      <h2>Career timeline.</h2>
+      <p>12+ years across banking, telecom and consumer goods. Tap a role to expand.</p>
+    </div>
+
+    <div class="timeline reveal" id="timeline">
+
+      <div class="entry open">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot current"></span>
+            <div class="entry-role">
+              <span class="title">Principal Backend Engineer</span>
+              <span class="meta">Backbase India Pvt. Ltd. · Bangalore</span>
+            </div>
+          </div>
+          <span class="entry-dates">Mar 2022 — Present</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body" style="max-height:400px;">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Leading full lifecycle development of microservices-based applications for banks across North America and MEA.</li>
+              <li>Driving architecture and development of backend services for Retail and Commercial Banking, FIS integration, and customer onboarding platforms.</li>
+              <li>Partnering with global teams across time zones to implement solutions aligned with compliance, performance and scalability goals.</li>
+              <li>Delivering robust backend workflows using Java, Spring Boot and event-driven architecture.</li>
+              <li>Collaborating with frontend, DevOps and QA teams to ensure seamless deployments to Kubernetes on Azure and other cloud platforms.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot"></span>
+            <div class="entry-role">
+              <span class="title">Full Stack Lead Developer</span>
+              <span class="meta">Cavinkare Pvt. Ltd. · Bangalore</span>
+            </div>
+          </div>
+          <span class="entry-dates">Apr 2020 — Mar 2022</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Delivered Cavinkare's enterprise digital transformation through cloud-first platforms.</li>
+              <li>Designed and deployed several full-stack web applications and backend services integrated with AI, analytics and custom business workflows.</li>
+            </ul>
+            <div class="highlight-block">
+              <div class="hb-label">Project highlights</div>
+              <ul>
+                <li>Award &amp; Appreciation Portal — Firebase, React</li>
+                <li>Competitor Evolution Analytics — Neo4j, Python, Java</li>
+                <li>AR App for Milkshake Promotions — Unity + Firebase</li>
+                <li>VOC Dashboard with Azure Cognitive + D3.js</li>
+                <li>Artwork Validator using OpenCV and Spring Boot</li>
+                <li>Tagging &amp; finding web app for bottles/packaging, and a salon home-service webapp — React, Java, Spring Boot, MongoDB</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot"></span>
+            <div class="entry-role">
+              <span class="title">Lead Developer — BT eCommerce</span>
+              <span class="meta">Tech Mahindra · UK</span>
+            </div>
+          </div>
+          <span class="entry-dates">Aug 2018 — Jan 2020</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Led development, code quality and architecture modernization for BT's eCommerce platforms.</li>
+              <li>Delivered microservices and Spring Boot APIs using Agile practices across globally distributed teams.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot"></span>
+            <div class="entry-role">
+              <span class="title">Technical Lead — BT eCommerce</span>
+              <span class="meta">Tech Mahindra · India</span>
+            </div>
+          </div>
+          <span class="entry-dates">Feb 2017 — Aug 2018</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Owned technical delivery for BT's eCommerce platform, driving code quality and modernization initiatives.</li>
+              <li>Worked across globally distributed Agile teams to deliver Spring Boot–based microservices.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot"></span>
+            <div class="entry-role">
+              <span class="title">Sr. Software Engineer — Digital Transformation</span>
+              <span class="meta">BT · UK</span>
+            </div>
+          </div>
+          <span class="entry-dates">Feb 2015 — Jan 2017</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Contributed to BT's digital transformation programme, building Spring Boot APIs and microservices.</li>
+              <li>Worked in progressive roles across architecture modernization and Agile delivery.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot"></span>
+            <div class="entry-role">
+              <span class="title">Sr. Software Engineer — White Label</span>
+              <span class="meta">BT · India</span>
+            </div>
+          </div>
+          <span class="entry-dates">Aug 2013 — Feb 2015</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Delivered backend services for BT's White Label platform in India.</li>
+              <li>Supported architecture modernization and code quality efforts across the eCommerce stack.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot"></span>
+            <div class="entry-role">
+              <span class="title">Consultant — Walt Disney World Project</span>
+              <span class="meta">Capgemini · USA</span>
+            </div>
+          </div>
+          <span class="entry-dates">Apr 2012 — Aug 2013</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Built event-driven, ESB-based services for Disney's legacy system integration.</li>
+              <li>Used Java, Spring IOC, SONIC ESB, Oracle and the broader Spring stack.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-left">
+            <span class="status-dot"></span>
+            <div class="entry-role">
+              <span class="title">IAM Developer — Salesforce.com</span>
+              <span class="meta">Capgemini · India</span>
+            </div>
+          </div>
+          <span class="entry-dates">Oct 2011 — Apr 2012</span>
+          <span class="entry-chevron">▾</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-body-inner">
+            <ul>
+              <li>Developed a federated identity management PoC integrating OpenAM and Salesforce.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Projects</div>
+      <h2>Selected work.</h2>
+      <p>A cross-section of full-stack and integration projects delivered at Cavinkare.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card reveal">
+        <div class="proj-org">Cavinkare</div>
+        <div class="proj-title">Award &amp; Appreciation Portal</div>
+        <p>Internal recognition platform built on a serverless stack for fast iteration and low ops overhead.</p>
+        <div class="proj-tags"><span class="tag">Firebase</span><span class="tag">React</span></div>
+      </div>
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-org">Cavinkare</div>
+        <div class="proj-title">Competitor Evolution Analytics</div>
+        <p>Graph-based analytics engine tracking competitor movement over time using a Neo4j data model.</p>
+        <div class="proj-tags"><span class="tag">Neo4j</span><span class="tag">Python</span><span class="tag">Java</span></div>
+      </div>
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-org">Cavinkare</div>
+        <div class="proj-title">AR App for Milkshake Promotions</div>
+        <p>Augmented reality consumer app for in-store promotional campaigns, backed by a Firebase serverless layer.</p>
+        <div class="proj-tags"><span class="tag">Unity</span><span class="tag">Firebase</span></div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-org">Cavinkare</div>
+        <div class="proj-title">VOC Dashboard</div>
+        <p>Voice-of-customer dashboard combining cognitive services with rich D3.js visualizations for business teams.</p>
+        <div class="proj-tags"><span class="tag">Azure Cognitive Services</span><span class="tag">D3.js</span></div>
+      </div>
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-org">Cavinkare</div>
+        <div class="proj-title">Artwork Validator</div>
+        <p>Computer-vision service that automatically validates packaging artwork against brand and compliance rules.</p>
+        <div class="proj-tags"><span class="tag">OpenCV</span><span class="tag">Spring Boot</span></div>
+      </div>
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-org">Cavinkare</div>
+        <div class="proj-title">Tagging &amp; Salon Home-Service Webapps</div>
+        <p>A tagging &amp; discovery tool for bottles and packaging, plus a booking webapp for Cavin's in-house salons.</p>
+        <div class="proj-tags"><span class="tag">React</span><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MongoDB</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Certifications</div>
+      <h2>Credentials.</h2>
+    </div>
+    <div class="cert-list reveal">
+      <div class="cert-item">
+        <span class="cert-name">AWS Cloud &amp; Alexa API Development</span>
+        <span class="cert-year">2018</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">Agile &amp; Scrum Certification</span>
+        <span class="cert-year">2013</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-name">Core Java Certification</span>
+        <span class="cert-year">2011</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Education</div>
+      <h2>Academic background.</h2>
+    </div>
+    <div class="edu-card reveal">
+      <div>
+        <div class="degree">Bachelor of Technology (B.Tech)</div>
+        <div class="field">Engineering</div>
+      </div>
+      <span class="pill">B.Tech</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-inner">
+    <div class="kicker reveal" style="text-align:center;">Get in touch</div>
+    <h2 class="reveal">Let's build something that stays up.</h2>
+    <p class="reveal reveal-delay-1">Open to new opportunities in backend engineering and technical leadership. Reach out directly — I read every message.</p>
+    <div class="contact-links reveal reveal-delay-2">
+      <a href="mailto:inboxsmits@gmail.com" class="btn btn-primary">inboxsmits@gmail.com</a>
+      <a href="https://www.linkedin.com/in/smita-sahu-7a704966/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Smita Sahu. Built with care.</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // header background on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive:true });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navAnchors.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0.4, rootMargin: '-64px 0px -50% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // expandable experience entries
+  document.querySelectorAll('.entry-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const entry = head.closest('.entry');
+      const body = entry.querySelector('.entry-body');
+      const isOpen = entry.classList.contains('open');
+      if (isOpen) {
+        entry.classList.remove('open');
+        body.style.maxHeight = '0px';
+      } else {
+        entry.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.entry.open .entry-body').forEach(body => {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
+  });
+
+  // resume buttons — no file provided, fallback to email request
+  function requestResume(e){
+    e.preventDefault();
+    window.location.href = 'mailto:inboxsmits@gmail.com?subject=Resume%20request&body=Hi%20Smita%2C%20could%20you%20send%20over%20your%20resume%3F';
+  }
+  document.getElementById('resumeBtn').addEventListener('click', requestResume);
+  document.getElementById('resumeNavBtn').addEventListener('click', requestResume);
+
+  // ---------- full-page floating dots background ----------
+  (function(){
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, dpr;
+
+    const colors = [
+      '110,139,242',   // blue
+      '167,139,250',   // violet
+      '34,211,238',    // cyan
+      '251,191,36',    // amber
+      '251,113,133',   // coral
+      '52,211,153',    // emerald
+      '251,146,60'     // orange
+    ];
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resize(){
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = document.documentElement.scrollHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const DOT_COUNT = Math.round((window.innerWidth * window.innerHeight) / 14000);
+    let dots = [];
+
+    function makeDots(){
+      dots = [];
+      for (let i = 0; i < DOT_COUNT; i++) {
+        dots.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 1.6 + 0.6,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: (Math.random() - 0.5) * 0.12,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: Math.random() * 0.35 + 0.15,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    resize();
+    makeDots();
+    window.addEventListener('resize', () => {
+      resize();
+      makeDots();
+    });
+
+    let t = 0;
+    function draw(){
+      ctx.clearRect(0, 0, width, height);
+      t += 0.01;
+      for (const d of dots) {
+        if (!reduceMotion) {
+          d.x += d.vx;
+          d.y += d.vy;
+          if (d.x < -10) d.x = width + 10;
+          if (d.x > width + 10) d.x = -10;
+          if (d.y < -10) d.y = height + 10;
+          if (d.y > height + 10) d.y = -10;
+        }
+        const flicker = reduceMotion ? d.alpha : d.alpha + Math.sin(t + d.phase) * 0.08;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + d.color + ',' + Math.max(flicker, 0) + ')';
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // resize when content height changes (accordion expands, etc.)
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(document.body);
+
+    canvas.classList.add('ready');
+  })();
+
+  // ---------- hero typewriter ----------
+  (function(){
+    const el = document.getElementById('typewriter');
+    const cursor = document.getElementById('typeCursor');
+    if (!el) return;
+
+    const phrases = [
+      'backend systems for banks.',
+      'cloud-native microservices.',
+      'event-driven architecture.',
+      'banking onboarding platforms.',
+      'FIS integrations that scale.'
+    ];
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      el.textContent = phrases[0];
+      if (cursor) cursor.style.display = 'none';
+      return;
+    }
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const typeSpeed = 55;
+    const deleteSpeed = 30;
+    const holdTime = 1500;
+
+    function tick(){
+      const current = phrases[phraseIndex];
+
+      if (!deleting) {
+        charIndex++;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, holdTime);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+      } else {
+        charIndex--;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, 300);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+    tick();
+  })();
+
+  // ---------- 3D hero background (Three.js) ----------
+  (function(){
+    const canvas = document.getElementById('hero-canvas');
+    const heroSection = document.getElementById('top');
+    let width = heroSection.clientWidth;
+    let height = heroSection.clientHeight;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
+    camera.position.z = 9;
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(width, height);
+
+    // point cloud representing a distributed network / node graph
+    const NODE_COUNT = 140;
+    const positions = new Float32Array(NODE_COUNT * 3);
+    const nodeData = [];
+    for (let i = 0; i < NODE_COUNT; i++) {
+      const radius = 4 + Math.random() * 4.5;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos((Math.random() * 2) - 1);
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.sin(phi) * Math.sin(theta) * 0.6;
+      const z = radius * Math.cos(phi) * 0.7 - 2;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+      nodeData.push({ x, y, z });
+    }
+
+    const pointsGeo = new THREE.BufferGeometry();
+    pointsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const pointsMat = new THREE.PointsMaterial({
+      color: 0x6e8bf2,
+      size: 0.055,
+      transparent: true,
+      opacity: 0.85,
+      sizeAttenuation: true
+    });
+    const points = new THREE.Points(pointsGeo, pointsMat);
+    scene.add(points);
+
+    // connecting lines between nearby nodes — evokes a service mesh / integration graph
+    const lineMatMain = new THREE.LineBasicMaterial({ color: 0x3a4568, transparent: true, opacity: 0.35 });
+    const linePositions = [];
+    const MAX_DIST = 2.6;
+    for (let i = 0; i < NODE_COUNT; i++) {
+      let connections = 0;
+      for (let j = i + 1; j < NODE_COUNT; j++) {
+        if (connections >= 3) break;
+        const dx = nodeData[i].x - nodeData[j].x;
+        const dy = nodeData[i].y - nodeData[j].y;
+        const dz = nodeData[i].z - nodeData[j].z;
+        const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+        if (dist < MAX_DIST) {
+          linePositions.push(nodeData[i].x, nodeData[i].y, nodeData[i].z);
+          linePositions.push(nodeData[j].x, nodeData[j].y, nodeData[j].z);
+          connections++;
+        }
+      }
+    }
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions), 3));
+    const lines = new THREE.LineSegments(lineGeo, lineMatMain);
+    scene.add(lines);
+
+    const group = new THREE.Group();
+    group.add(points);
+    group.add(lines);
+    scene.add(group);
+
+    let mouseX = 0, mouseY = 0;
+    let targetRotX = 0, targetRotY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+      targetRotY = mouseX * 0.25;
+      targetRotX = mouseY * 0.15;
+    }, { passive: true });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function onResize(){
+      width = heroSection.clientWidth;
+      height = heroSection.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    }
+    window.addEventListener('resize', onResize);
+
+    let frame = 0;
+    function animate(){
+      requestAnimationFrame(animate);
+      frame += 1;
+
+      if (!reduceMotion) {
+        group.rotation.y += 0.0009;
+        group.rotation.y += (targetRotY - group.rotation.y) * 0.02;
+        group.rotation.x += (targetRotX - group.rotation.x) * 0.02;
+      }
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    canvas.classList.add('ready');
+  })();
+</script>
+
+</body>
+</html>
